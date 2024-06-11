@@ -2,11 +2,14 @@ package com.orangeHRM.qa.pages;
 
 import java.util.List;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import com.orangeHRM.qa.utils.UtilityMethods;
 
 public class IndexPage {
 	
@@ -37,7 +40,11 @@ public class IndexPage {
 	
 	//Used to get String values and int count of results
 	@FindBy(xpath="//ul[@class='oxd-main-menu']//span")
-	List<WebElement> searchedSectionResult;
+	public
+	List<WebElement> searchedSectionResults;
+	
+	@FindBy(xpath="//ul[@class='oxd-main-menu']//span")
+	public WebElement searchedSectionResult;
 	
 	
 	public boolean verifyDashboardTextOnIndexPage()
@@ -61,14 +68,14 @@ public class IndexPage {
 	}
 	 public String retrieveValidSearchSection()
 	 {
-		 String validSearchSectionText = searchedSectionResult.get(0).getText();
+		 String validSearchSectionText = searchedSectionResults.get(0).getText();
 		 return validSearchSectionText;
 	 }
 	 
 	 public int retrieveSearchSectionCount()
 	 {
-		 int seearchSectioncount = searchedSectionResult.size();
-		 return seearchSectioncount;
+		 int searchSectioncount = searchedSectionResults.size();
+		 return searchSectioncount;
 	 }
 	 
 	 public void verifyandSearch(String search)
@@ -81,8 +88,23 @@ public class IndexPage {
 			enterSearchText(search);
 	 }
 	 
-	
-	
-	
-	
+	 public Boolean visibilityOfSectionResult(String search)
+	 {
+		 verifyandSearch(search);
+		 return UtilityMethods.checkIfElementDisplayed(searchedSectionResults.get(0));
+	 }
+	 
+	 public AdminPage searchAndOpenSection(String search)
+	 {
+		 Boolean Expand = verifyExpandSearchSection();
+			if(!Expand)
+			{
+				clickToExpandSearchSection();
+			}
+			enterSearchText(search);
+			//UtilityMethods.clickOnElement(driver, searchedSectionResults.get(0));
+			searchedSectionResults.get(0).click();
+			AdminPage adminPage = new AdminPage(driver);
+			return adminPage;
+	 }
 }

@@ -8,6 +8,7 @@
     <classes>
       <class name="com.orangeHRM.qa.testcases.LoginTest"/>
       <class name="com.orangeHRM.qa.testcases.SearchTest"/>
+      <class name="com.orangeHRM.qa.testcases.AdminTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

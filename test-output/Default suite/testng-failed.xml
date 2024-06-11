@@ -3,13 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.orangeHRM.qa.testcases.Login">
+      <class name="com.orangeHRM.qa.testcases.AdminTest">
         <methods>
-          <include name="setup"/>
-          <include name="verifyLoginWithValidCredentials" invocation-numbers="1 2"/>
           <include name="tearDown"/>
+          <include name="suggestionWithEmployeeNameVisible"/>
+          <include name="verifyPresenceOfTableData"/>
+          <include name="searchAdminsWithUsername"/>
+          <include name="setup"/>
+          <include name="searchAdminsWithUserRole"/>
+          <include name="searchAdminsWithoutEnteringAnyDetails"/>
         </methods>
-      </class> <!-- com.orangeHRM.qa.testcases.Login -->
+      </class> <!-- com.orangeHRM.qa.testcases.AdminTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

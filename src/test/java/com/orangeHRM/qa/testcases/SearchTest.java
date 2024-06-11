@@ -1,8 +1,5 @@
 package com.orangeHRM.qa.testcases;
 
-import java.time.Duration;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -10,9 +7,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.orangeHRM.qa.base.Base;
+import com.orangeHRM.qa.utils.UtilityMethods;
 import com.orangeHRM.qa.pages.IndexPage;
 import com.orangeHRM.qa.pages.LoginPage;
-import com.orangeHRM.qa.utils.Utilities;
 
 public class SearchTest extends Base{
 	
@@ -60,5 +57,15 @@ IndexPage indexPage;
 		indexPage = loginPage.login(prop.getProperty("validId"), prop.getProperty("validPassword"));
 		Assert.assertEquals(indexPage.retrieveSearchSectionCount(),Integer.valueOf(dataProp.getProperty("allSectionCount")),"Searched a section");
 	}
+	
+	@Test(priority=3)
+	public void verifySearchWithAnyWordAndGetSectionVisibility() 
+	{
+		indexPage = loginPage.login(prop.getProperty("validId"), prop.getProperty("validPassword"));
+		//indexPage.verifyandSearch(dataProp.getProperty("randomSectionSearchByWord"));
+		Assert.assertTrue(indexPage.visibilityOfSectionResult(dataProp.getProperty("randomSectionSearchByWord")));
+		//Assert.assertTrue(indexPage.retrieveSearchSectionCount()>Integer.valueOf(dataProp.getProperty("noSectionCount")),"No section visible");
+	}
+	
 	
 }

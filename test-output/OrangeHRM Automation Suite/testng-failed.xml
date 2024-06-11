@@ -6,14 +6,24 @@
   </listeners>
   <test thread-count="5" name="OrangeHRM Tests(failed)">
     <classes>
-      <class name="com.orangeHRM.qa.testcases.Login">
+      <class name="com.orangeHRM.qa.testcases.LoginTest">
         <methods>
           <include name="setup"/>
-          <include name="verifyLoginWithValidEmailAndInvalidPassword"/>
           <include name="tearDown"/>
           <include name="verifyLoginWithValidCredentials" invocation-numbers="1 2"/>
         </methods>
-      </class> <!-- com.orangeHRM.qa.testcases.Login -->
+      </class> <!-- com.orangeHRM.qa.testcases.LoginTest -->
+      <class name="com.orangeHRM.qa.testcases.AdminTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="suggestionWithEmployeeNameVisible"/>
+          <include name="verifyPresenceOfTableData"/>
+          <include name="setup"/>
+          <include name="searchAdminsWithUsername"/>
+          <include name="searchAdminsWithUserRole"/>
+          <include name="searchAdminsWithoutEnteringAnyDetails"/>
+        </methods>
+      </class> <!-- com.orangeHRM.qa.testcases.AdminTest -->
     </classes>
   </test> <!-- OrangeHRM Tests(failed) -->
 </suite> <!-- Failed suite [OrangeHRM Automation Suite] -->
